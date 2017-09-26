@@ -1,0 +1,24 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="personal-info">
+    <text selectable="{{false}}">输入你的个人信息：</text>
+    <input class="input-box" type="text" maxlength="20" placeholder="15-新传-小明" focus="{{true}}" bindinput="userRemarkInput" />
+  </view>
+  <view class="record-area">
+    <button wx:if="{{!isRecorded && !isRecording}}" class="button record-button" hover-class="record-button-hover" bindtap="startRecord">点击录音</button>
+    <button wx:if="{{isRecording}}" class="button recording-button" hover-class="recording-button-hover" bindtap="stopRecord">
+      {{ 60 - recordTime + 's' }}
+    </button>
+    <view wx:if="{{isRecorded}}" class="check-record">
+      <button wx:if="{{!isPlaying}}" class="button check-button" hover-class="check-button-hover" bindtap="playRecord">试听</button>
+      <button wx:if="{{isPlaying}}" class="button check-button" hover-class="check-button-hover" bindtap="stopPlayRecord">停止</button>
+      <button class="button check-button" hover-class="check-button-hover" bindtap="uploadRecord">上传</button>
+      <button class="button retry-button" hover-class="retry-button-hover" bindtap="retry">重录</button>
+    </view>
+  </view>
+</view>

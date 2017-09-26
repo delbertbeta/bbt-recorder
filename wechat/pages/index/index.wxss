@@ -1,0 +1,84 @@
+/**index.wxss**/
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 200rpx;
+  height: 200rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.personal-info {
+  margin-top: 40rpx;
+  width: 600rpx;
+}
+
+.input-box {
+  margin-top: 20rpx;
+}
+
+.record-area {
+  position: absolute;
+  bottom: 20rpx;
+}
+
+.button {
+  width: 175rpx;
+  height: 175rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.record-button {
+  background-color: #09bb07;
+}
+
+.record-button-hover {
+  background-color: #0b9e08;
+}
+
+.recording-button {
+  background-color: #f00000;
+}
+
+.recording-button-hover {
+  background-color: #d60000;
+}
+
+.check-record {
+  width: 100%;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.check-button {
+  background-color: #09bb07;
+}
+
+.check-button-hover {
+  background-color: #0b9e08;
+}
+
+.retry-button {
+  background-color: #f00000;
+}
+
+.retry-button-hover {
+  background-color: #d60000;
+}

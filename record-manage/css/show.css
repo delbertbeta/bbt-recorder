@@ -1,0 +1,55 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.play {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.play>.play-button {
+  height: 150px;
+  width: 150px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #09BB07;
+  transition: background-color 0.5s ease;
+}
+
+.play>.play-button:hover {
+  background-color: #54D44F;
+}
+
+.play>.play-button:active {
+  background-color: #1FB817;
+}
+
+.play>.play-button>.icon {
+  display: none;
+  width: 80px;
+  height: 80px;
+  padding: 35px;
+}
+
+.play>.play-button>.icon.show {
+  display: block;
+}
+
+.text {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.text>.tip-text>.name {
+  color: #09BB07;
+  margin-right: 5px;
+  font-weight: 700;
+}

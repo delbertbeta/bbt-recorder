@@ -1,0 +1,9 @@
+@media (max-width: 800px) {
+    .card-slider-image {
+        display: none !important;
+    }
+}
+
+.offset-s0p5 {
+    margin-left: 4%;
+}

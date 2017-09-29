@@ -1,0 +1,26 @@
+.icon-area {
+  width: 100%;
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.tip-text {
+  margin-top: 30rpx;
+}
+
+.code-area {
+  width: 100%;
+  margin-top: 100rpx;
+  text-align: center;
+}
+
+.code-text {
+  font-size: 300%;
+  color: rgb(9, 187, 7);
+}
+
+.code-tip {
+  font-size: 80%;
+  color: rgb(100, 100, 100);
+  padding-top: 50rpx;
+}

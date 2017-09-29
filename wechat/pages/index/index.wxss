@@ -82,3 +82,20 @@
 .retry-button-hover {
   background-color: #d60000;
 }
+
+.error-toast {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 400rpx;
+  height: 300rpx;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10rpx;
+  text-align: center;
+  opacity: 0;
+}
+
+.error-icon {
+  margin: 50rpx 0;
+}

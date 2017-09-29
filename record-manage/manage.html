@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>录音管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--Import Google Icon Font-->
+    <link href="css/icon.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+</head>
+
+<body>
+    <audio id="audioPlayer"></audio>
+    <div id="app">
+        <div class="section light-blue darken-1">
+            <div class="container">
+                <h1 class="white-text header center-on-small-only col s12 light ">
+                    录音管理
+                </h1>
+                <a id="logoutButton" class="waves-effect waves-light btn red">注销</a>
+            </div>
+        </div>
+        <div id="files" class="section">
+            <div class="container">
+                <a id="logoutButton" class="waves-effect waves-light btn col s1" @click="selectAll">选中本页</a>
+                <a id="logoutButton" class="waves-effect waves-light btn col s1" @click="exportQrCode">导出选中二维码</a>
+            </div>
+            <div class="container">
+                <ul class="collection">
+                    <template v-for="record in selectedRecord">
+                        <li class="collection-item avatar">
+                            <span class="circle record-button play white-text">
+                                <i class="material-icons play-icon" v-on:click="playRecord($event, record.displayId)">play_arrow</i>
+                                <i class="material-icons stop-icon" v-on:click="stopPlayRecord($event, record.displayId)">stop</i>
+                            </span>
+                            <span class="title">{{ record.remark }}</span>
+                            <p>微信号: {{ record.wechat }} <br> {{ record.regtime }} </p>
+                            <div class="secondary-content">
+                                <input type="checkbox" :value="record.displayId" v-model="checkedIds" name="check" />
+                                <a v-bind:href="record.url" download><i class="material-icons teal-text pointer">file_download</i></a>
+                                <a v-on:click="deleteRecord(record.displayId)"><i class="material-icons red-text pointer">delete</i></a>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+                <ul id="pagination" class="pagination row center">
+                    <li class="disabled"><a v-on:click="forwardPage"><i class="material-icons">chevron_left</i></a></li>
+                    <li v-for="n in pages" class="waves-effect pointer"><a v-on:click="changePage(n)">{{ n }}</a></li>
+                    <li class="waves-effect"><a v-on:click="nextPage"><i class="material-icons">chevron_right</i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="page-footer light-blue darken-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">录音管理</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 百步梯技术部
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="./js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="./js/moment.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.js"></script>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript" src="./js/app.js"></script>
+</body>
+
+</html>

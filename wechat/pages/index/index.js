@@ -11,6 +11,9 @@ Page({
     isPlaying: false,
     recordTime: 0,
     userRemark: '',
+    errorAnimation: {},
+    errorText: '错误',
+    errorShowing: false
   },
   onLoad: function () {
     var that = this
@@ -52,10 +55,7 @@ Page({
         })
       },
       fail: function (res) {
-        wx.showToast({
-          title: '录音失败，请检查是否给予微信录音权限',
-          duration: 2000
-        });
+        that.showError('录音失败，请检查是否给予微信录音权限')
         that.stopRecord();
       },
     })
@@ -81,10 +81,7 @@ Page({
 
       },
       fail: function () {
-        wx.showToast({
-          title: '播放失败',
-          duration: 2000,
-        })
+        that.showError('播放失败');
       },
     })
   },
@@ -103,10 +100,7 @@ Page({
   uploadRecord: function () {
     var that = this;
     if (this.data.userRemark === '') {
-      wx.showToast({
-        title: '请填写您的基本信息',
-        duration: 2000,
-      })
+      this.showError('请填写您的基本信息');
       return;
     }
     wx.showLoading({
@@ -128,27 +122,45 @@ Page({
         wx.hideLoading();
         if (response.status == 1) {
           that.retry();
-          wx.showToast({
-            title: '上传成功',
-            icon: 'success',
-            duration: 2000,
+          wx.navigateTo({
+            url: 'result?state=true&code=' + response.code,
           })
         }
         else {
-          wx.showToast({
-            title: response.message,
-            duration: 2000,
-          })
+          that.showError(response.message);
         }
       },
       fail: function (res) {
         wx.hideLoading();
         // console.log(res);
-        wx.showToast({
-          title: '上传失败，请重试',
-          duration: 2000,
-        })
+        that.showError('上传失败，请重试')
       },
     })
+  },
+  showError: function (msg) {
+    this.errorShowing = true;
+    this.setData({
+      errorText: msg
+    });
+    var animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: 'ease',
+      delay: 0
+    });
+    this.animation = animation;
+    animation.opacity(1).step();
+    this.setData({
+      errorAnimation: this.animation.export()
+    });
+    setTimeout(this.hideError.bind(this), 2000)
+  },
+  hideError: function () {
+    if (this.errorShowing === true) {
+      this.errorShowing = false;
+      this.animation.opacity(0).step();
+      this.setData({
+        errorAnimation: this.animation.export()
+      })
+    }
   }
 })

@@ -1,0 +1,61 @@
+.message-text{
+    margin: 0px 10px 0px 10px;
+}
+
+.grey-text.darken-1{
+    color: #757575 !important;
+}
+
+.middle{
+    vertical-align: middle;
+}
+
+pre {
+    font-family: "Roboto", sans-serif !important;
+    white-space: pre-wrap;
+    word-wrap: break-word; 
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.record-button {
+    display: inline-block;
+    background-color: #009688;
+    cursor: pointer;
+}
+
+.record-button {
+    display: flex !important;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-icon {
+    display: none;
+}
+
+.stop-icon {
+    display: none;
+}
+
+.play .play-icon {
+    display: block;
+}
+
+.stop .stop-icon {
+    display: block;
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    display: relative;
+    opacity: 1;
+    left: 0;
+    margin: 4px 0px 0px -20px
+}

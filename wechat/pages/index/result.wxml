@@ -1,0 +1,11 @@
+<!--pages/result/result.wxml-->
+
+<view class="icon-area">
+  <view><icon type="success" size="100"></icon></view>
+  <view class="tip-text"><text>上传成功</text></view>
+</view>
+
+<view class="code-area">
+  <view><text class="code-text">{{ code }}</text></view>
+  <view><text class="code-tip">记得截图保存【专属声音编号】噢~</text></view>
+</view>

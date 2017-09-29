@@ -22,3 +22,8 @@
     </view>
   </view>
 </view>
+
+<view animation="{{ errorAnimation }}" class="error-toast">
+  <view class="error-icon"><icon type="clear" size="40" color="grey"></icon></view>
+  <view><text class="error-text"> {{ errorText }}</text></view>
+</view>

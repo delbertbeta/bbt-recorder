@@ -1,11 +1,12 @@
 {
   "pages":[
-    "pages/index/index"
+    "pages/index/index",
+    "pages/index/result"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "录音",
+    "navigationBarTitleText": "BBT留声机",
     "navigationBarTextStyle":"black"
   }
 }

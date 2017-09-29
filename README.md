@@ -31,7 +31,7 @@ binary file
 
 * 返回：
 
-```json
+```
 {
   "status": number,      // status code (0 is right)
   "message": string,  // error message if needed.
@@ -49,7 +49,7 @@ binary file
 
 * 负载: 
 
-```json
+```
 {
   "username": string,
   "password": string
@@ -58,7 +58,7 @@ binary file
 
 * 返回:
 
-```json
+```
 {
   "status": number,   // status code
   "message": string,  // error message if needed.
@@ -73,7 +73,7 @@ binary file
 
 * 返回: 
 
-```json
+```
 [
   {
     "regtime": number,   // unix timestamp for the upload time.
@@ -98,7 +98,7 @@ binary file
 
 * 负载: 
 
-```json
+```
 {
   id: number      // only one number will be post.
 }
@@ -106,7 +106,7 @@ binary file
 
 * 返回:
 
-```json
+```
 {
   "status": number,      // status code
   "message": string,  // error message if needed.
@@ -123,7 +123,7 @@ binary file
 
 * 返回:
 
-```json
+```
 {
   "status": number,      // status code
   "message": string,  // error message if needed.
@@ -140,7 +140,7 @@ binary file
 
 * 负载: 
 
-```json
+```
 {
   id: [
     numbers
@@ -160,7 +160,7 @@ binary file
 
 * 返回:
 
-```json
+```
 {
   "status": number,      // status code
   "message": string,    // error message if needed.

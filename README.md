@@ -149,6 +149,9 @@ binary file
 ```
 
 * 返回: 当成功打包时返回 zip 的 blob，当失败时直接产生错误的 HTTP 请求码。
+	* 400:缺少id或者id为空
+	* 500：zip操作出错
+
 
 7. /api/get_info.php
 
@@ -166,5 +169,16 @@ binary file
   "message": string,    // error message if needed.
   "remark": string,     // the user input name.
   "url": string         // url to static file of the record audio.
+}
+//demo
+{
+ 	"status":0,
+	"message":"",
+	"remark":"this is a user remark",
+	"usr":"/record/156545262.mp3"
+}
+//deme(error){
+	"status":1,
+	"message":""
 }
 ```

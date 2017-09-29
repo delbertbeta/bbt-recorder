@@ -1,0 +1,53 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 2017-04-06 15:28:08
+-- 服务器版本： 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `chunzhao`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `name` varchar(10) COLLATE utf8mb4_bin NOT NULL COMMENT '姓名',
+  `sex` varchar(6) COLLATE utf8mb4_bin NOT NULL COMMENT '性别',
+  `college` varchar(15) COLLATE utf8mb4_bin NOT NULL COMMENT '学院',
+  `grade` varchar(10) COLLATE utf8mb4_bin NOT NULL COMMENT '年级',
+  `dorm` varchar(10) COLLATE utf8mb4_bin NOT NULL COMMENT '宿舍',
+  `phone` varchar(11) COLLATE utf8mb4_bin NOT NULL COMMENT '电话',
+  `department1` varchar(10) COLLATE utf8mb4_bin NOT NULL COMMENT '部门1',
+  `department2` varchar(10) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '部门2',
+  `intro` varchar(100) COLLATE utf8mb4_bin NOT NULL COMMENT '介绍',
+  `time` datetime NOT NULL COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin AUTO_INCREMENT=4 ;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `sex`, `college`, `grade`, `dorm`, `phone`, `department1`, `department2`, `intro`, `time`) VALUES
+(3, '大苏打', 'male', '电子与信息学院', '大二', 'C10-212', '1301301300', '视觉设计部', '', '', '2017-04-06 21:19:49');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

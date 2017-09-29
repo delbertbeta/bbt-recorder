@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+	<title>record</title>
+</head>
+<body>
+
+	<form action="index.php" method="post" enctype="multipart/form-data" id="form1">
+    <input type="text" name="webchat" id="webchat" value="Jefungwebchat">
+    <input type="text" name="remark" id="remark" value="remark">
+		<input id="file" type="file" name="file">
+		<input id="upload" type="button" value="按钮">
+	</form>
+
+
+	<script type="text/javascript" src="jquery-3.2.0.min.js"></script>
+	<script type="text/javascript">
+		$("#upload").click(function(){
+  var files = $('#file').prop('files');
+  var data = new FormData();
+  var user = {
+  webchat : $("#webchat").val(),
+  remark : $("#remark").val()
+  }
+  user=JSON.stringify(user);
+  data.append('file', files[0]);
+  data.append("user",user);
+  
+  $.ajax({
+      url: 'index.php',
+      type: 'POST',
+      data: data,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success:function(data){
+        console.log(JSON.parse(data))
+      }
+  });
+});
+
+</script>
+</body>
+</html>

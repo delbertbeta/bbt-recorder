@@ -1,4 +1,5 @@
 <?php
+require "common.php";
 class MyPdo{
 	private $pdo;
 	private $db;
@@ -38,7 +39,7 @@ class MyPdo{
 	function selectAll(){
 		try{
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$statement = $this->pdo->prepare("select * from ".$this->db["tablename"]);
+			$statement = $this->pdo->prepare("select `recordWechat` as 'wechat',`recordRemark` as 'remark',`recordPath` as 'url',`WTime` as 'regtime', `recordId` as 'id' from ".$this->db["tablename"]);
 			$statement -> execute();
 			$respond = $statement -> fetchAll(PDO::FETCH_ASSOC);
 			return $respond;
@@ -50,14 +51,74 @@ class MyPdo{
 	function delById($id){
 		try{
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$statement = $this->pdo->prepare("delete  from ".$this->db["tablename"]." where `id`=:id");
+			$statement = $this->pdo->prepare("delete  from ".$this->db["tablename"]." where `recordId`=:id");
 			$statement -> bindParam(":id",$id);
 			$statement -> execute();
+			return back(0);
 		}catch(PDOException $e){
-			echo "Error".$e->getMessage()."<br/>";
+			return back(1,$e->getMessage());
 			return 0;
 		}
 		return 1;
+	}
+
+	/**
+	 * getRecordByNum 
+	 * 
+	 * @param mixed $num 
+	 * @access public
+	 * @return void
+	 */
+	function getPathByNum($num){
+		try{
+			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$statement = $this->pdo->prepare("select `recordPath` as 'url',`recordWechat` as 'wechat', `recordRemark` as 'remark'from ".$this->db["tablename"]." where `recordNum` = :num");
+			$statement -> bindParam(":num",$num);
+			$statement -> execute();
+			$respond = $statement -> fetchAll(PDO::FETCH_ASSOC);
+			if(empty($respond))
+				return back(2,"数据库无记录");
+			return back(0,$respond[0]);
+		}catch(PDOException $e){
+			return back(1,$e->getMessage());	
+		}
+	}
+
+	/**
+	 * getQRCodeByIds 
+	 *		获取对应id的二维码路径 
+	 * @param mixed $ids id或者id数组 
+	 * @access public
+	 * @return array 返回数组，0代表数据库操作正确，其他代表错误，message 里面包含信息/数据
+	 */
+	function getQRCodeByIds($ids){
+		//将不是数组的参数转化为数组
+		$idArr = [];
+		if(!is_array($ids))
+			$idArr[] = $ids;
+		else $idArr = $ids;
+
+		$in = implode(',',$idArr); 
+		try{	
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$statement = $this->pdo->prepare('SELECT * FROM '.$this->db["tablename"].' WHERE `recordId` IN ('.$in.')');
+		$statement->execute();
+		$respond = $statement -> fetchAll(PDO::FETCH_ASSOC);
+		if(empty($respond)){
+			return back(1,"找不到id所在的记录");	
+		}
+		$arr = [];
+		foreach($respond as $k => $v){
+			$arr[] = $v["recordNum"];
+		}
+		return back(0,$arr);
+		}catch(PDOException $e){
+			return back(2,$e->getMessage());
+		}
+
+
+
+
 	}
 }
 	

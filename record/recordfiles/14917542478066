@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="./css/table.css">
+        <title>百步梯秋季招新</title>
+    </head>
+
+    <body>
+        <div class="main">
+            <input type="hidden" name="token" id="token" value="05400fe66c93916d945f4d037667903e">
+            <div class="part">
+                <label>
+                    <p class="open">姓名</p>
+                    <input type="text" name="name" id="name" class="leave" placeholder="请填写真实姓名">
+                </label>    
+            </div>
+                
+            <div class="part" style="border-width: 0px;">
+                <label>
+                    <p class="open">性别</p>
+                    <input type="radio" name="sex" id="sex"  value="male"
+                    style="padding: initial;margin: 3px;width: 12.8px;height: 12.8px;-moz-appearance: radio;-webkit-appearance:radio;appearance:radio;">男<input type="radio" name="sex" id="sex"  value="female" style="padding: initial;margin: 3px;width: 12.8px;height: 12.8px;-moz-appearance: radio;-webkit-appearance:radio;appearance:radio;">女
+                </label>
+            </div>
+
+            <div class="part">
+                <label>
+                    <p class="open">学院</p>
+                    <select name="college" id="college" class="leave" style="color: rgba(153,153,153,0.5);" onchange="choose(this)">
+                        
+                        <option value="">请选择</option>
+
+                        <option value="材料科学与工程学院">C.材料科学与工程学院</option>
+
+                        <option value="电子与信息学院">D.电子与信息学院</option>
+
+                        <option value="电力学院">D.电力学院</option>
+
+                        <option value="法学院（知识产权学院）">F.法学院（知识产权学院）</option>
+
+                        <option value="国际教育学院">G.国际教育学院</option>
+                        
+                        <option value="工商管理学院（创业教育学院）">G.工商管理学院（创业教育学院）</option>
+
+                        <option value="公共管理学院">G.公共管理学院</option>
+
+                        <option value="环境与能源学院">H.环境与能源学院</option>
+
+                        <option value="化学与化工学院">H.化学与化工学院</option>
+
+                        <option value="机械与汽车工程学院">J.机械与汽车工程学院</option>
+                        
+                        <option value="计算机科学与工程学院">J.计算机科学与工程学院</option>
+                        
+                        <option value="建筑学院">J.建筑学院</option>
+                        
+                        <option value="经济与贸易学院">J.经济与贸易学院</option>
+
+                        <option value="理学院（数学系 物理系)">L.理学院（数学系 物理系)</option>
+                        
+                        <option value="轻工与食品学院">Q.轻工与食品学院</option>
+
+                        <option value="软件学院">R.软件学院</option>
+
+                        <option value="生物科学与工程学院">S.生物科学与工程学院</option>
+
+                        <option value="思想政治学院">S.思想政治学院</option>
+
+                        <option value="设计学院">S.设计学院</option>
+                        
+                        <option value="土木与交通学院">T.土木与交通学院</option>
+                        
+                        <option value="体育学院">T.体育学院</option>
+                                        
+                        <option value="外国语学院">W.外国语学院</option>
+
+                        <option value="新闻与传播学院">X.新闻与传播学院</option>
+
+                        <option value="艺术学院">Y.艺术学院</option>
+                            
+                        <option value="医学院">Y.医学院</option>  
+
+                        <option value="自动化科学与工程学院">Z.自动化科学与工程学院</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="part" style="border-width: 0">
+                <label>
+                    <p class="open">年级</p>
+                    <input type="radio" name="grade" id="grade"  value="大一"
+                    style="padding: initial;margin: 3px;width: 12.8px;height: 12.8px;-moz-appearance: radio;-webkit-appearance:radio;appearance:radio;">大一<input type="radio" name="sex" id="sex"  value="大二" style="padding: initial;margin: 3px;width: 12.8px;height: 12.8px;-moz-appearance: radio;-webkit-appearance:radio;appearance:radio;">大二
+                </label>
+            </div>
+
+            <div class="part">
+                <label>
+                    <p class="open">宿舍</p> 
+                    <input type="text" name="dorm" class="leave" placeholder="具体到房间号 如C12 242" id="dorm">   
+                </label>   
+            </div>
+            
+    
+            <div class="part">
+                <label>
+                    <p class="open">手机号</p> 
+                    <input type="text" name="phone" class="leave" placeholder="请填写正确长号" id="phone">  
+                </label> 
+            </div>
+
+             <div class="part1">
+                <label>
+                    <p>报名意向</p>
+                    <div>                     
+                        <select name="department1" id="department1" class="leave1" style="color: rgba(153,153,153,0.5);" onchange="choose(this)">
+                            <option value="">第一志愿（请选择部门）</option>   
+
+                            <option value="编辑部">B.编辑部</option>
+
+                            <option value="策划推广部">C.策划推广部</option>
+
+                            <option value="产品运营部">C.产品运营部（北校）</option>
+
+                            <option value="技术部（北校）">J.技术部（北校）</option>
+                                    
+                            <option value="技术部（南校）">J.技术部（南校）</option>
+
+                            <option value="节目部">J.节目部</option>
+
+                            <option value="人力资源部">R.人力资源部</option>
+
+                            <option value="视频部">S.视频部</option>
+
+                            <option value="视觉设计部">S.视觉设计部</option>
+
+                            <option value="外联部">W.外联部</option>
+
+                            <option value="综合新闻部">Z.综合新闻部</option>
+
+                            <option value="综合管理部">Z.综合管理部</option>
+                                                        
+                        </select>   
+                    </div>
+                </label>
+
+                <div>
+                    <select name="department2" id="department2" class="leave2" value="" style="color: rgba(153,153,153,0.5);" onchange="choose(this)">
+                        <option value=""> 第二志愿（选填）</option> 
+                                
+                        <option value="编辑部" id="A">B.编辑部</option>
+
+                        <option value="策划推广部" id="B">C.策划推广部</option>
+
+                        <option value="产品运营部" id="C">C.产品运营部（北校）</option>
+
+                        <option value="技术部（北校）" id="D">J.技术部（北校）</option>
+                                
+                        <option value="技术部（南校）" id="E">J.技术部（南校）</option>
+
+                        <option value="节目部" id="F">J.节目部</option>
+
+                        <option value="人力资源部" id="G">R.人力资源部</option>
+
+                        <option value="视频部" id="H">S.视频部</option>
+
+                        <option value="视觉设计部" id="I">S.视觉设计部</option>
+
+                        <option value="外联部" id="J">W.外联部</option>
+
+                        <option value="综合新闻部" id="K">Z.综合新闻部</option>
+
+                        <option value="综合管理部" id="L">Z.综合管理部</option>
+
+                    </select>
+                </div>
+     
+            </div>
+
+            <div class="part2">
+                <label>
+                    <p>个人介绍</p>
+                    <textarea id="intro" class="leave3" name="intro" maxlength="50" placeholder="可选填(50字以内)" value=""></textarea>
+                </label>
+            </div>
+
+            <div class="part3">
+                <button id="btn" onclick="submit()">提交</button>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <img src="./img/bottom.png">
+            <p class="foot">Copyright © 2016 BBTech</p>
+
+        </div>
+        <script src="./js/jquery-3.1.0.min.js"></script>
+        <script src="./js/form.js"></script>
+        <script src="./js/ajax.js"></script>
+        <script type="text/javascript">
+     
+        </script>
+            
+
+
+    </body>
+ 
+</html>

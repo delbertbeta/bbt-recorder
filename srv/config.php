@@ -15,4 +15,6 @@ return [
 	//后台下载zip包的用户名和密码
 	"username"                    => "root",
 	"password"                    => "root",
+	//encrype函数加解密所用的秘钥
+	"key"						  => "2017bbtrecord",
 ];

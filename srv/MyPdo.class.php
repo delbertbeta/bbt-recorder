@@ -9,7 +9,9 @@ class MyPdo{
 		$db = $config["database"];
 		$this->db = $db;
 		try{
-			$this->pdo = new PDO("mysql:host=".$db["hostname"].";dbname=".$db["dbname"],$db["username"],$db["password"]);	
+			//设置数据库编码
+			$_opts_values = array(PDO::ATTR_PERSISTENT=>true,PDO::ATTR_ERRMODE=>2,PDO::MYSQL_ATTR_INIT_COMMAND=>'SET NAMES utf8');
+			$this->pdo = new PDO("mysql:host=".$db["hostname"].";dbname=".$db["dbname"],$db["username"],$db["password"],$_opts_values);	
 		}catch(PDOException $e){
 			echo $e->getMessage();
 			return 0;

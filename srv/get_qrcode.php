@@ -1,17 +1,18 @@
 <?php
 require "MyPdo.class.php";
 $conf = require "config.php";
-$json = file_get_contents('php://input');
-$input = json_decode($json,true);
-
-if(!isset($input["id"]) || empty($input["id"])){
+// $json = file_get_contents('php://input');
+// $input = json_decode($json,true);
+if(!isset($_GET["json"]) || empty($_GET["json"])){
 	header("HTTP/1.1 400 Bad Request");
 	return;
 }
 
+$ids = str_replace('[','',$_GET["json"]);
+$ids = str_replace(']','',$ids);
+$ids = explode(',',$ids);
 $pdo = new MyPdo();
-$res = $pdo->getQRCodeByIds($input["id"]);
-
+$res = $pdo->getQRCodeByIds($ids);
 if($res["status"]){
 	header("HTTP/1.1 204 No Content");
 	return;

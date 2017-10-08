@@ -11,13 +11,15 @@
 $json = file_get_contents('php://input');
 $input = json_decode($json,true);
 var_dump($input);
+$input["user"]["wechat"] = "jefung2";
+$input["user"]["remark"] = "这是一个备注！！！";
 if(!empty($_FILES) && isset($input["user"])){
  	$user = $input["user"];
 	//生成文件名
  	$record_path = time().rand(100,999);
 	$conf = require "config.php";
 	//移动文件
- 	move_uploaded_file($_FILES["recordFile"]["tmp_name"], __DIR__."/".$conf["recordPath"]."/".$record_path);
+ 	move_uploaded_file($_FILES["recordFile"]["tmp_name"], __DIR__."/".$conf["recordPath"]."/".$record_path.".mp3");
  	if(keyFiltrate($user)){
  		$respond = array("status"=>"2","message"=>"输入数据含敏感词");
  		echo json_encode($respond);

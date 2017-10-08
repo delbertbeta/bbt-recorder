@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>录音管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--Import Google Icon Font-->
+    <link href="./css/icon.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="./css/manage-style.css" media="screen,projection" />
+</head>
+
+<body>
+    <div class="section light-blue darken-1">
+        <div class="container">
+            <h1 class="white-text header center-on-small-only col s12 light ">
+                录音管理
+            </h1>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img class="card-slider-image" src="./img/bg_slider.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4>登录</h4>
+                                <form id="loginForm">
+                                    <div class="input-field col s12">
+                                        <input id="username" type="text" class="validate">
+                                        <label for="username">Username</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="password" type="password" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light light-blue darken-2 btn offset-s10" id="loginButton">LOGIN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer light-blue darken-1">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">录音管理</h5>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 百步梯技术部
+            </div>
+        </div>
+    </footer>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
+</body>
+
+</html>

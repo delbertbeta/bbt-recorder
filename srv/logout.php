@@ -1,8 +1,9 @@
 <?php
 require "common.php";
 session_start();
-if(!isset($_SESSION["admin"]))
-	return json_encode(back("1","你未登录"));
+if(!isset($_SESSION["admin"])){
+	echo json_encode(back("1","你未登录"));
+	return;
+}
 unset($_SESSION["admin"]);
-return json_encode(back(0));
-session_close();
+echo json_encode(back(0));

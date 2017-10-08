@@ -134,7 +134,7 @@ binary file
 
 * 说明: 获取对应 id 的二维码打包后的 zip 文件
 
-* 方法: POST
+* 方法: GET
 
 * 类型: application/json
 
@@ -142,7 +142,7 @@ binary file
 
 ```
 {
-  id: [
+  json: [
     numbers
   ]      // the id fetched from get_record.php api.
 }

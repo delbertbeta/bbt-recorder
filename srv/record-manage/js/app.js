@@ -55,7 +55,11 @@ var app = new Vue({
                 Materialize.toast('请选中一个录音后再导出', 4000);
                 return;
             }
-            get('/get_qrcode.php', this.checkedIds, true, function (blob) {
+            let ids = [];
+            for (var i = 0; i < this.checkedIds.length; i++) {
+                ids.push(this.selectedRecord[this.checkedIds[i]].id);
+            }
+            get('/get_qrcode.php', ids, true, function (blob) {
                 var saveData = (function () {
                     var a = document.createElement('a')
                     document.body.appendChild(a)

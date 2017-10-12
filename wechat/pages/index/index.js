@@ -107,7 +107,7 @@ Page({
       title: '上传中',
     })
     wx.uploadFile({
-      url: 'https://withcic.cn/apps/upload/index.php?upload',
+      url: 'https://record.withcic.cn/upload.php',
       filePath: that.data.recordFile,
       name: 'recordFile',
       formData: {

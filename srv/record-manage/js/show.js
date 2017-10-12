@@ -10,8 +10,6 @@ playButton.addEventListener('click', function () {
 })
 
 window.addEventListener('load', function () {
-  // get info here..
-  audioPlayer.src = './test/music.mp3';
   audioPlayer.addEventListener('ended', function () {
     playIcon.classList.add('show');
     pauseIcon.classList.remove('show');
@@ -36,3 +34,39 @@ var switchPlayVision = function () {
     }
   }
 }
+
+var get = function get(url, data, successHandle, errorHandle) {
+  var xmlhttp = new XMLHttpRequest()
+  if (xmlhttp != null) {
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState === 4) { // 4 = "loaded"
+        if (xmlhttp.status === 200) { // 200 = "OK"
+          successHandle(xmlhttp.responseText)
+        } else {
+          errorHandle(xmlhttp.statusText)
+        }
+      }
+    }
+    xmlhttp.open('GET', url + (data !== '' ? '?' : '') + data, true)
+    xmlhttp.send(null)
+  }
+}
+
+function getInfo() {
+  function GetQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+  }
+  var code = GetQueryString('code');
+  get('/get_info.php', 'code=' + code, function (res) {
+  // get('/record-manage/test/getinfo.json', 'code=' + code, function (res) {
+    var result = JSON.parse(res);
+    document.getElementById('name').textContent = result.remark;
+    audioPlayer.src = result.url;
+  }, function () {
+    // no error handle!
+  })
+}
+getInfo();

@@ -120,7 +120,7 @@ Page({
         console.log(res);
         var response = JSON.parse(res.data);
         wx.hideLoading();
-        if (response.status == 1) {
+        if (response.status == 0) {
           that.retry();
           wx.navigateTo({
             url: 'result?state=true&code=' + response.code,

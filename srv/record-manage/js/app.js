@@ -145,7 +145,7 @@ var getRecords = function () {
                 var records = [];
                 for (var i = 0; i < data.respond.length; i++) {
                     var aRecord = data.respond[i];
-                    aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:MM:SS');
+                    aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:mm:ss');
                     aRecord.displayId = i;
                     aRecord.url = aRecord.url.replace('silk', 'mp3');
                     records.push(aRecord);

@@ -4,29 +4,29 @@ var app = new Vue({
 	el: '#app',
 	data: {
 		records: [],
-	pages: 0,
-	selectedRecord: [],
-	checkedIds: [],
+		pages: 0,
+		selectedRecord: [],
+		checkedIds: [],
 	},
 	watch: {
 		checkedIds: function () {
 			console.log(this.checkedIds);
 		},
-	pages: function () {
-		setTimeout(function () {
-			var lis = $('#pagination').children();
-			var first = lis[1];
-			first.className = 'active light-blue';
-			if (lis.length == 3) {
-				last = lis[2];
-				last.className = 'disabled';
-			}
-		}, 50);
-	},
-	records: function () {
-		app.pages = Math.ceil(app.records.length / 10);
-		navigationManager(pageNow);
-	},
+		pages: function () {
+			setTimeout(function () {
+				var lis = $('#pagination').children();
+				var first = lis[1];
+				first.className = 'active light-blue';
+				if (lis.length == 3) {
+					last = lis[2];
+					last.className = 'disabled';
+				}
+			}, 50);
+		},
+		records: function () {
+			app.pages = Math.ceil(app.records.length / 10);
+			navigationManager(pageNow);
+		},
 	},
 	methods: {
 		nextPage: function () {
@@ -69,10 +69,10 @@ var app = new Vue({
 							type: 'octet/stream'
 						})
 						var url = window.URL.createObjectURL(blob)
-					a.href = url
-					a.download = fileName
-					a.click()
-					window.URL.revokeObjectURL(url)
+						a.href = url
+						a.download = fileName
+						a.click()
+						window.URL.revokeObjectURL(url)
 					}
 				}())
 				var date = new Date();
@@ -130,92 +130,60 @@ var stopPlayRecord = function (event, id) {
 }
 
 var getRecords = function () {
-<<<<<<< HEAD
-    $.ajax({
-        method: 'GET',
-        dataType: 'json',
-        // url: 'https://withcic.cn/apps/upload/index.php?show',
-        // url: 'http://192.168.1.106/record/index.php?show',
-        url: '/get_record.php',
-        // xhrFields: {
-        //     withCredentials: true
-        // },
-        // crossDomain: true,
-        success: function (data) {
-            if (data.status == 1) {
-                var records = [];
-                for (var i = 0; i < data.respond.length; i++) {
-                    var aRecord = data.respond[i];
-                    aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:mm:ss');
-                    aRecord.displayId = i;
-                    aRecord.url = aRecord.url.replace('silk', 'mp3');
-                    records.push(aRecord);
-                }
-                app.records = records;
-            } else {
-                Materialize.toast(data.message, 4000);
-            }
-        },
-        error: function (error) {
-            Materialize.toast(error.responseText, 4000);
-        }
-    })
-=======
 	$.ajax({
 		method: 'GET',
-	dataType: 'json',
-	// url: 'https://withcic.cn/apps/upload/index.php?show',
-	// url: 'http://192.168.1.106/record/index.php?show',
-	url: '/get_record.php',
-	// xhrFields: {
-	//     withCredentials: true
-	// },
-	// crossDomain: true,
-	success: function (data) {
-		if (data.status == 1) {
-			var records = [];
-			for (var i = 0; i < data.respond.length; i++) {
-				var aRecord = data.respond[i];
-				aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:mm:ss');
-				aRecord.displayId = i;
-				aRecord.url = aRecord.url.replace('silk', 'mp3');
-				records.push(aRecord);
+		dataType: 'json',
+		// url: 'https://withcic.cn/apps/upload/index.php?show',
+		// url: 'http://192.168.1.106/record/index.php?show',
+		url: '/get_record.php',
+		// xhrFields: {
+		//     withCredentials: true
+		// },
+		// crossDomain: true,
+		success: function (data) {
+			if (data.status == 1) {
+				var records = [];
+				for (var i = 0; i < data.respond.length; i++) {
+					var aRecord = data.respond[i];
+					aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:mm:ss');
+					aRecord.displayId = i;
+					aRecord.url = aRecord.url.replace('silk', 'mp3');
+					records.push(aRecord);
+				}
+				app.records = records;
+			} else {
+				Materialize.toast(data.message, 4000);
 			}
-			app.records = records;
-		} else {
-			Materialize.toast(data.message, 4000);
+		},
+		error: function (error) {
+			Materialize.toast(error.responseText, 4000);
 		}
-	},
-	error: function (error) {
-		Materialize.toast(error.responseText, 4000);
-	}
 	})
->>>>>>> ce225eb3ddc2a0b51919e8c6c73e7598999c3811
 }
 
 var deleteRecord = function (id) {
 	$.ajax({
 		method: 'POST',
-	url: '/delete_record.php',
-	// url: 'http://192.168.1.106/record/index.php?delete=1',
-	contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-	data: 'id=' + app.records[id].id,
-	dataType: 'json',
-	// xhrFields: {
-	//     withCredentials: true
-	// },
-	// crossDomain: true,
-	success: function (data) {
-		if (data.status == 0) {
-			Materialize.toast('删除成功', 4000);
-			app.records.splice(id, 1);
-		} else {
-			Materialize.toast(data.message, 4000);
+		url: '/delete_record.php',
+		// url: 'http://192.168.1.106/record/index.php?delete=1',
+		contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+		data: 'id=' + app.records[id].id,
+		dataType: 'json',
+		// xhrFields: {
+		//     withCredentials: true
+		// },
+		// crossDomain: true,
+		success: function (data) {
+			if (data.status == 0) {
+				Materialize.toast('删除成功', 4000);
+				app.records.splice(id, 1);
+			} else {
+				Materialize.toast(data.message, 4000);
+			}
+		},
+		error: function (error) {
+			Materialize.toast(error.responseText, 4000);
 		}
-	},
-	error: function (error) {
-		Materialize.toast(error.responseText, 4000);
-	}
 	})
 }
 
@@ -232,9 +200,9 @@ var changePage = function (page) {
 	} else {
 		var startPoint = (page - 1) * 40;
 		for (let i = startPoint;
-				(i < (startPoint + 40)) && (i < app.records.length); i++) {
-					app.selectedRecord.push(app.records[i]);
-				}
+			(i < (startPoint + 40)) && (i < app.records.length); i++) {
+			app.selectedRecord.push(app.records[i]);
+		}
 	}
 }
 
@@ -310,96 +278,96 @@ var selectAll = function () {
 
 var dataChecker = function (data, json) {
 	var type = typeof (data)
-		switch (type) {
-			case 'string':
-				return data
-			case 'object':
-					if (json) {
-						return JSON.stringify(data)
-					} else {
-						var counter = 0
-							var targetString = ''
-							for (var prop in data) {
-								if (data.hasOwnProperty(prop)) {
-									var propFilter = prop.replace(/&/g, '')
-										var dataFilter = data[prop].toString().replace(/&/g, '')
-										if (counter === 0) {
-											targetString = targetString + propFilter + '=' + dataFilter
-										} else {
-											targetString = targetString + '&' + propFilter + '=' + dataFilter
-										}
-									counter++
-								}
-							}
-						return targetString
+	switch (type) {
+		case 'string':
+			return data
+		case 'object':
+			if (json) {
+				return JSON.stringify(data)
+			} else {
+				var counter = 0
+				var targetString = ''
+				for (var prop in data) {
+					if (data.hasOwnProperty(prop)) {
+						var propFilter = prop.replace(/&/g, '')
+						var dataFilter = data[prop].toString().replace(/&/g, '')
+						if (counter === 0) {
+							targetString = targetString + propFilter + '=' + dataFilter
+						} else {
+							targetString = targetString + '&' + propFilter + '=' + dataFilter
+						}
+						counter++
 					}
-			default:
-					return data
-		}
+				}
+				return targetString
+			}
+		default:
+			return data
+	}
 }
 
 var post = function post(url, data, json, successHandle, errorHandle, blob) {
 	var xmlhttp = new XMLHttpRequest()
-		if (xmlhttp != null) {
-			xmlhttp.onreadystatechange = function () {
-				if (xmlhttp.readyState === 4) { // 4 = "loaded"
-					if (xmlhttp.status === 200) { // 200 = "OK"
-						if (blob) {
-							successHandle(xmlhttp.response)
-						} else {
-							successHandle(xmlhttp.responseText)
-						}
+	if (xmlhttp != null) {
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState === 4) { // 4 = "loaded"
+				if (xmlhttp.status === 200) { // 200 = "OK"
+					if (blob) {
+						successHandle(xmlhttp.response)
 					} else {
-						if (blob) {
-							errorHandle(xmlhttp.response)
-						} else {
-							errorHandle(xmlhttp.statusText)
-						}
+						successHandle(xmlhttp.responseText)
+					}
+				} else {
+					if (blob) {
+						errorHandle(xmlhttp.response)
+					} else {
+						errorHandle(xmlhttp.statusText)
 					}
 				}
 			}
-			var targetData = dataChecker(data, json)
-				xmlhttp.open('POST', url, true)
-				if (json) {
-					xmlhttp.setRequestHeader('Content-Type', 'application/json')
-				} else {
-					xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-				}
-			if (blob) {
-				xmlhttp.responseType = 'blob'
-			}
-			xmlhttp.send(targetData)
 		}
+		var targetData = dataChecker(data, json)
+		xmlhttp.open('POST', url, true)
+		if (json) {
+			xmlhttp.setRequestHeader('Content-Type', 'application/json')
+		} else {
+			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+		}
+		if (blob) {
+			xmlhttp.responseType = 'blob'
+		}
+		xmlhttp.send(targetData)
+	}
 }
 
-const get = function get (url, data, json, successHandle, errorHandle, blob) {
+const get = function get(url, data, json, successHandle, errorHandle, blob) {
 	var xmlhttp = new XMLHttpRequest()
-		if (xmlhttp != null) {
-			xmlhttp.onreadystatechange = function () {
-				if (xmlhttp.readyState === 4) { // 4 = "loaded"
-					if (xmlhttp.status === 200) { // 200 = "OK"
-						if (blob) {
-							successHandle(xmlhttp.response)
-						} else {
-							successHandle(xmlhttp.responseText)
-						}
+	if (xmlhttp != null) {
+		xmlhttp.onreadystatechange = function () {
+			if (xmlhttp.readyState === 4) { // 4 = "loaded"
+				if (xmlhttp.status === 200) { // 200 = "OK"
+					if (blob) {
+						successHandle(xmlhttp.response)
 					} else {
-						if (blob) {
-							errorHandle(xmlhttp.response)
-						} else {
-							errorHandle(xmlhttp.statusText)
-						}
+						successHandle(xmlhttp.responseText)
+					}
+				} else {
+					if (blob) {
+						errorHandle(xmlhttp.response)
+					} else {
+						errorHandle(xmlhttp.statusText)
 					}
 				}
 			}
-			var targetData = dataChecker(data, json)
-				if (json) {
-					targetData = 'json=' + targetData
-				}
-			xmlhttp.open('GET', url + (targetData !== '' ? '?' : '') + targetData, true)
-				if (blob) {
-					xmlhttp.responseType = 'blob'
-				}
-			xmlhttp.send(null)
 		}
+		var targetData = dataChecker(data, json)
+		if (json) {
+			targetData = 'json=' + targetData
+		}
+		xmlhttp.open('GET', url + (targetData !== '' ? '?' : '') + targetData, true)
+		if (blob) {
+			xmlhttp.responseType = 'blob'
+		}
+		xmlhttp.send(null)
+	}
 }

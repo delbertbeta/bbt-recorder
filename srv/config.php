@@ -10,7 +10,7 @@ return [
 
 	"recordPath"                  => "record",
 	"qrcodePath"                  => "qrcode",
-	"website"                     => "www.website.com",
+	"website"                     => "https://record.withcic.cn",
 	"zipName"					  => "QRCode.zip",
 	//后台下载zip包的用户名和密码
 	"username"                    => "root",

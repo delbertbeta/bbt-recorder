@@ -4,7 +4,7 @@ $conf = require "config.php";
 
 //验证参数
 if(!isset($_GET["code"]) || empty($_GET["code"]))
-	return json_encode(back(1,"参数有误"));
+	echo json_encode(back(1,"参数有误"));
 
 $num = encrypt($_GET["code"],'D',$conf["key"]);
 $pdo = new MyPdo();
@@ -16,8 +16,7 @@ if( $arr["status"] == 0){
 		"remark"  => $arr["message"]["remark"],
 		"status"  => 0,
 	];
-	var_dump($res);
-	return json_encode($res);
+	echo json_encode($res);
 }else{
-	return json_encode(back(1,$arr["msg"]));
+	echo json_encode(back(1,$arr["msg"]));
 }

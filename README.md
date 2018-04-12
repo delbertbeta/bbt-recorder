@@ -21,6 +21,7 @@ name: user; content-type: application/json
 {
   wechat: string,       // the wechat name
   remark: string        // the user input name
+  content: string       // the user message
 }
 
 -----form part------
@@ -35,11 +36,39 @@ binary file
 {
   "status": number,      // status code (0 is right)
   "message": string,  // error message if needed.
-  "code": string      // the identify code if uploaded successfully.
+  // "code": string      // deprecated, the identify code if uploaded successfully.
 }
 ```
 
-2. /api/login.php
+2. /api/upload-no-record.php
+
+* 说明：提交一个纯文本留言
+
+* 方法: POST
+
+* 类型：application/json
+
+* 负载:
+
+```
+{
+  wechat: string,       // the wechat name
+  remark: string        // the user input name
+  content: string       // the user message
+}
+```
+
+* 返回：
+
+```
+{
+  "status": number,      // status code (0 is right)
+  "message": string,  // error message if needed.
+  // "code": string      // deprecated, the identify code if uploaded successfully.
+}
+```
+
+3. /api/login.php
 
 * 说明: 登录认证（请投放 session）
 
@@ -65,7 +94,7 @@ binary file
 }
 ```
 
-3. /api/get_recored.php
+4. /api/get_recored.php
 
 * 说明: 获取所有录音
 
@@ -81,6 +110,7 @@ binary file
     "url": string,       // url to static file of the record audio.
     "remark": string,    // the user input name.
     "wechat": string,    // the wechat name.
+    "message": string    // the user message.
   },
   {
     ...
@@ -88,7 +118,7 @@ binary file
 ]
 ```
 
-4. /api/delete_record.php
+5. /api/delete_record.php
 
 * 说明: 删除一条录音
 
@@ -113,7 +143,7 @@ binary file
 }
 ```
 
-5. /api/logout.php
+6. /api/logout.php
 
 * 说明: 登出并销毁 session
 
@@ -130,7 +160,12 @@ binary file
 }
 ```
 
-6. /api/get_qrcode.php
+
+---
+
+> **deprecated**
+
+7. /api/get_qrcode.php
 
 * 说明: 获取对应 id 的二维码打包后的 zip 文件
 
@@ -153,7 +188,7 @@ binary file
 	* 500：zip操作出错
 
 
-7. /api/get_info.php
+8. /api/get_info.php
 
 * 说明: 根据二维码指向的链接中带的参数（加密后的标识符）获得录音的相关信息。
 

@@ -8,9 +8,10 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.5.4",
+	"libVersion": "1.9.94",
 	"appid": "wx4f39a8ba12f2ffd8",
 	"projectname": "%E7%99%BE%E6%AD%A5%E6%A2%AF%E7%95%99%E5%A3%B0%E6%9C%BA",
+	"isGameTourist": false,
 	"condition": {
 		"search": {
 			"current": -1,
@@ -18,6 +19,10 @@
 		},
 		"conversation": {
 			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {

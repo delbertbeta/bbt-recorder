@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{hasUserInfo}}">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class="info-view">
+        <text class="login-text">已登陆</text>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <button bindtap='login'>登陆一下嘛T_T</button>
+    </block>
+  </view>
+  <view class="text-info">
+    <label for="username">你的名字</label>
+    <input bindinput='usernameInput' confirm-type="done" placeholder="15-新传-小明" />
+    <label for="content">留言</label>
+    <textarea bindinput='contentInput' maxlength="-1" placeholder="留言和录音要有其中之一才能提交哦~" />
+  </view>
+  <view class="function-area">
+    <view class="record-area">
+      <block wx-if="{{state === 0}}">
+        <button hover-class="button-hover" class='submit-button' bindtap='startRecord'>录音</button>
+      </block>
+      <block wx-if="{{state === 1}}">
+        <button hover-class="recording-button-hover" class='recording-button animation' bindtap='stopRecord'><view class="progress" style="{{'width:' + progress + '%'}}"></view>录音中</button>
+      </block>
+      <block wx-if="{{state === 2}}">
+        <button hover-class="button-hover" class='submit-button small' bindtap='playRecord'>{{playing === false ? '试听' : '停止'}}</button>
+        <button hover-class="recording-button-hover" class='recording-button small' bindtap='startRecord'>重录</button>
+      </block>
+    </view>
+    <button bindtap='submit' hover-class="button-hover" class='submit-button'>提交</button>
+  </view>
+</view>

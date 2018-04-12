@@ -9,9 +9,9 @@ var app = new Vue({
         checkedIds: [],
     },
     watch: {
-        checkedIds: function () {
-            console.log(this.checkedIds);
-        },
+        // checkedIds: function () {
+        //     console.log(this.checkedIds);
+        // },
         pages: function () {
             setTimeout(function () {
                 var lis = $('#pagination').children();
@@ -47,37 +47,37 @@ var app = new Vue({
         deleteRecord: function (id) {
             deleteRecord(id);
         },
-        selectAll: function () {
-            selectAll();
-        },
-        exportQrCode: function () {
-            if (this.checkedIds.length === 0) {
-                Materialize.toast('请选中一个录音后再导出', 4000);
-                return;
-            }
-            get('./test/record.json', this.checkedIds, true, function (blob) {
-                var saveData = (function () {
-                    var a = document.createElement('a')
-                    document.body.appendChild(a)
-                    a.style = 'display: none'
-                    return function (data, fileName) {
-                        var blob = new Blob([data], {
-                            type: 'octet/stream'
-                        })
-                        var url = window.URL.createObjectURL(blob)
-                        a.href = url
-                        a.download = fileName
-                        a.click()
-                        window.URL.revokeObjectURL(url)
-                    }
-                }())
-                var date = new Date();
-                var fileName = 'bbt_record_qrcode_' + date.getFullYear() + '_' + (date.getMonth() + 1) + '_' + date.getDate() + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.zip';
-                saveData(blob, fileName);
-            }, function (err) {
-                Materialize.toast('网络错误', 4000);
-            }, true)
-        }
+        // selectAll: function () {
+        //     selectAll();
+        // },
+        // exportQrCode: function () {
+        //     if (this.checkedIds.length === 0) {
+        //         Materialize.toast('请选中一个录音后再导出', 4000);
+        //         return;
+        //     }
+        //     get('./test/record.json', this.checkedIds, true, function (blob) {
+        //         var saveData = (function () {
+        //             var a = document.createElement('a')
+        //             document.body.appendChild(a)
+        //             a.style = 'display: none'
+        //             return function (data, fileName) {
+        //                 var blob = new Blob([data], {
+        //                     type: 'octet/stream'
+        //                 })
+        //                 var url = window.URL.createObjectURL(blob)
+        //                 a.href = url
+        //                 a.download = fileName
+        //                 a.click()
+        //                 window.URL.revokeObjectURL(url)
+        //             }
+        //         }())
+        //         var date = new Date();
+        //         var fileName = 'bbt_record_qrcode_' + date.getFullYear() + '_' + (date.getMonth() + 1) + '_' + date.getDate() + '_' + date.getHours() + '_' + date.getMinutes() + '_' + date.getSeconds() + '.zip';
+        //         saveData(blob, fileName);
+        //     }, function (err) {
+        //         Materialize.toast('网络错误', 4000);
+        //     }, true)
+        // }
     }
 })
 

@@ -1,0 +1,16 @@
+/* pages/success/success.wxss */
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.container > text {
+  margin-top: 64rpx;
+  color: #444;
+  font-size: 16pt;
+}
+
+.container > button {
+  margin-top: 128rpx;
+}

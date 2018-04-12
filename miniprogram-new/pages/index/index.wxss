@@ -1,0 +1,112 @@
+/**index.wxss**/
+
+button {
+  margin: 0
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 20rpx 0 0;
+  border-radius: 8rpx;
+  box-shadow: 0rpx 5rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.info-view {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.login-text {
+  font-size: 32rpx;
+  color: #444;
+}
+
+.userinfo-nickname {
+  color: black;
+  font-weight: 700;
+}
+
+.usermotto {
+  margin-top: 40rpx;
+}
+
+.text-info {
+  width: 80vw;
+  margin-top: 52rpx;
+  font-size: 11pt;
+}
+
+.text-info > label {
+  display: block;
+  margin: 12rpx 0;
+}
+
+.function-area {
+  width: 80vw;
+  margin-top: 100rpx;
+}
+
+.submit-button {
+  background-color: #09bb07;
+  color: white;
+  width: 100%;
+  margin-bottom: 32rpx;
+}
+
+.record-area {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.recording-button {
+  color: white;
+  width: 100%;
+  margin-bottom: 32rpx;
+  background-color: #e64340;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: width 0.5s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.recording-button.animation {
+  animation: blink 5s ease 0s infinite;
+}
+
+.small {
+  width: 35vw;
+}
+
+.button-hover {
+  background-color: #2bd529;
+}
+
+@keyframes blink {
+  from {
+    background-color: #e64340;
+  }
+
+  50% {
+    background-color: #fc817e;
+  }
+
+  to {
+    background-color: #e64340;
+  }
+}

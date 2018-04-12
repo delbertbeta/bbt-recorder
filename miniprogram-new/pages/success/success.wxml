@@ -1,0 +1,6 @@
+<!--pages/success/success.wxml-->
+<view class='container'>
+  <icon type="success" size="100"></icon>
+  <text>我们收到您的留言啦~</text>
+  <button bindtap='close'>关闭</button>
+</view>

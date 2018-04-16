@@ -172,12 +172,13 @@ Page({
     };
     if (this.tempFilePath === '') {
       wx.request({
-        url: 'https://localhost/testurl',
+        url: 'https://hemc.100steps.net/2018/bbt-recorder/backend/upload-no-record.php',
         data: {
           wechat: this.data.userInfo.nickName,
           remark: this.data.username,
           message: this.data.content
         },
+        method: 'POST',
         dataType: 'json',
         success: (data) => {
           if (data.data.status === 0) {
@@ -202,7 +203,7 @@ Page({
       })
     } else {
       wx.uploadFile({
-        url: 'https://localhost/testurl',
+        url: 'https://hemc.100steps.net/2018/bbt-recorder/backend/upload.php',
         filePath: this.tempFilePath,
         name: 'recordFile',
         formData: {
@@ -213,13 +214,14 @@ Page({
           })
         },
         success: (data) => {
-          if (data.data.status === 0) {
+          let obj = JSON.parse(data.data);
+          if (obj.status === 0) {
             wx.redirectTo({
               url: '/pages/success/success'
             })
           } else {
             wx.showToast({
-              title: data.data.message,
+              title: obj.message,
               icon: 'none',
               duration: 2000
             })

@@ -24,7 +24,7 @@ var app = new Vue({
             }, 50);
         },
         records: function () {
-            app.pages = Math.ceil(app.records.length / 10);
+            app.pages = Math.ceil(app.records.length / 40);
             navigationManager(pageNow);
         },
     },
@@ -129,9 +129,9 @@ var getRecords = function () {
     $.ajax({
         method: 'GET',
         dataType: 'json',
-        // url: 'https://withcic.cn/apps/upload/index.php?show',
+        url: '/2018/bbt-recorder/backend/get_record.php',
         // url: 'http://192.168.1.106/record/index.php?show',
-        url: './test/record.json',
+        // url: './test/record.json',
         // xhrFields: {
         //     withCredentials: true
         // },
@@ -141,9 +141,9 @@ var getRecords = function () {
                 var records = [];
                 for (var i = 0; i < data.respond.length; i++) {
                     var aRecord = data.respond[i];
-                    aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:MM:SS');
+                    aRecord.regtime = moment.unix(aRecord.regtime).format('YYYY年MM月DD日 HH:mm:ss');
                     aRecord.displayId = i;
-                    aRecord.url = 'https://withcic.cn/apps/upload/recordfiles/' + aRecord.url.replace('silk', 'mp3');
+                    aRecord.url = aRecord.url.includes('silk') ? '/2017/bbtfm/recordfiles/' + aRecord.url.replace(/\/record\/|.silk/g, '') : '/2018/bbt-recorder/backend' + aRecord.url;
                     records.push(aRecord);
                 }
                 app.records = records;
@@ -160,10 +160,12 @@ var getRecords = function () {
 var deleteRecord = function (id) {
     $.ajax({
         method: 'POST',
-        url: 'https://withcic.cn/apps/upload/index.php?delete=1',
+        url: '/2018/bbt-recorder/backend/delete_record.php',
         // url: 'http://192.168.1.106/record/index.php?delete=1',
-        contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-        data: 'id=' + app.records[id].id,
+        contentType: 'application/json',
+        data: JSON.stringify({
+            id: app.records[id].id
+        }),
         dataType: 'json',
         // xhrFields: {
         //     withCredentials: true
@@ -244,7 +246,7 @@ getRecords();
 document.getElementById('logoutButton').addEventListener('click', function () {
     $.ajax({
         method: 'GET',
-        url: 'https://withcic.cn/apps/upload/index.php?logout',
+        url: '/2018/bbt-recorder/backend/logout.php',
         // url: 'http://192.168.1.106/record/index.php?logout',
         // xhrFields: {
         //     withCredentials: true
@@ -252,7 +254,7 @@ document.getElementById('logoutButton').addEventListener('click', function () {
         // crossDomain: true,
         dataType: 'json',
         success: function (result) {
-            if (result.status == 1) {
+            if (result.status == 0) {
                 window.location.href = "./index.html"
             } else {
                 Materialize.toast(result.message, 4000);

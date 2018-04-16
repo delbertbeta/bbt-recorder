@@ -33,7 +33,7 @@
                 <ul class="collection">
                     <template v-for="record in selectedRecord">
                         <li class="collection-item avatar">
-                            <span v-if="record.url !== ''" class="circle record-button play white-text">
+                            <span v-if="record.url !== '/2018/bbt-recorder/backend'" class="circle record-button play white-text">
                                 <i class="material-icons play-icon" v-on:click="playRecord($event, record.displayId)">play_arrow</i>
                                 <i class="material-icons stop-icon" v-on:click="stopPlayRecord($event, record.displayId)">stop</i>
                             </span>
@@ -42,7 +42,7 @@
                             <p>留言：{{record.message}}</p>
                             <div class="secondary-content">
                                 <!-- <input type="checkbox" :value="record.displayId" v-model="checkedIds" name="check" /> -->
-                                <a v-if="record.url !== ''" v-bind:href="record.url" download><i class="material-icons teal-text pointer">file_download</i></a>
+                                <a v-if="record.url !== '/2018/bbt-recorder/backend'" v-bind:href="record.url" download><i class="material-icons teal-text pointer">file_download</i></a>
                                 <a v-on:click="deleteRecord(record.displayId)"><i class="material-icons red-text pointer">delete</i></a>
                             </div>
                         </li>

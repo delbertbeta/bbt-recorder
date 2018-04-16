@@ -1,5 +1,15 @@
 /**index.wxss**/
 
+.background {
+  position: fixed;
+  z-index: -1;
+  top: -100rpx;
+  right: -100rpx;
+  width: 30%;
+  height: 400rpx;
+  transform: rotate(-30deg);
+}
+
 button {
   margin: 0
 }

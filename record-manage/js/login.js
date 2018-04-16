@@ -17,17 +17,18 @@ function verifyLogin() {
     }
     $.ajax({
         method: 'POST',
-        // url: 'https://withcic.cn/apps/upload/index.php?login',
+        url: '/2018/bbt-recorder/backend/login.php',
         // url: 'http://192.168.1.106/record/index.php?login',
-        url: './test/login.json',
-        data: login,
+        // url: './test/login.json',
+        contentType: 'application/json',
+        data: JSON.stringify(login),
         dataType: 'json',
         // xhrFields: {
         //     withCredentials: true
         // },
         // crossDomain: true,
         success: function (result) {
-            if (result.status == 1) {
+            if (result.status == 0) {
                 window.location.href = './manage.html';
             } else {
                 Materialize.toast(result.message, 4000);
